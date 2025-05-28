@@ -59,8 +59,9 @@ solenoid FOFOdCoil coilName=Coil1 current=-$solcurrent
 # detector and filter
 #virtualdetector det radius=500 length=0.001 color=0,1,0 format=ascii
 #particlefilter filter radius=1000 length=0.001 color=1,1,1 kill=mu+ nWait=$nWait referenceWait=1
-virtualdetector betmin radius=300 length=0.001 color='' format=ascii
-virtualdetector betmax radius=300 length=0.001 color='' format=ascii
+#virtualdetector betmin radius=300 length=0.001 color='' format=ascii
+#virtualdetector betmax radius=300 length=0.001 color='' format=ascii
+virtualdetector det radius=300 length=0.001 color='' format=ascii
 
 
 ################################
@@ -69,15 +70,29 @@ virtualdetector betmax radius=300 length=0.001 color='' format=ascii
 
 #newparticlentuple det0 file=det0.txt format=ascii
 
+#do i 0 10
+
+#  place betmax x=0 z=$period*$i y=0
+#  place betmin x=0 z=$period*$i+$period/4 y=0
+#  place FOFOfCoil x=0 z=$period*$i+$period/4  y=0 
+#  place betmax x=0 z=$period*$i+$period/2 y=0
+#  place FOFOdCoil x=0 z=$period*$i+$period*3/4  y=0 
+#  place betmin x=0 z=$period*$i+$period*3/4 y=0
+  
+#enddo
+
+
 do i 0 10
 
-  place betmax x=0 z=$period*$i y=0
-  place betmin x=0 z=$period*$i+$period/4 y=0
+  place det x=0 z=$period*$i y=0
+  place det x=0 z=$period*$i+$period/8 y=0 ###
+  place det x=0 z=$period*$i+$period/4 y=0
   place FOFOfCoil x=0 z=$period*$i+$period/4  y=0 
-  place betmax x=0 z=$period*$i+$period/2 y=0
+  place det x=0 z=$period*$i+3*$period/8 y=0 ###
+  place det x=0 z=$period*$i+$period/2 y=0
+  place det x=0 z=$period*$i+5*$period/8 y=0 ###
   place FOFOdCoil x=0 z=$period*$i+$period*3/4  y=0 
-  place betmin x=0 z=$period*$i+$period*3/4 y=0
+  place det x=0 z=$period*$i+$period*3/4 y=0
+  place det x=0 z=$period*$i+7*$period/8 y=0 ###
   
 enddo
-
-
