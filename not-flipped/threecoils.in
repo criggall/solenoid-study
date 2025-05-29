@@ -33,7 +33,7 @@ reference particle=mu+ \
 
 particlecolor reference=1,1,1
 
-beam gaussian particle=mu+ nEvents=5000 beamX=1.50 beamY=0 beamZ=0 beamXp=$beamxp  beamYp=$beamyp \
+beam gaussian particle=mu+ nEvents=100 beamX=1.50 beamY=0 beamZ=0 beamXp=$beamxp  beamYp=$beamyp \
      sigmaX=20.0 sigmaY=20. sigmaXp=0.1 sigmaYp=0.1 meanMomentum=$refP sigmaP=0.0 meanT=0.0 sigmaT=0.0
 
 # kill secondaries
@@ -52,6 +52,7 @@ param sollength=400.0
 param period=1000.0
 param solcurrent=100.0
 param maxStep=5.0
+param tilt=-0.1432394487827058 #deg
 coil Coil1 innerRadius=$solinner outerRadius=$solinner+$solthick length=$sollength maxR=5000 maxZ=10000.0
 solenoid FOFOCoil coilName=Coil1 current=$solcurrent
 
@@ -65,12 +66,12 @@ virtualdetector det radius=300 length=0.001 color='' format=ascii
 ### ELEMENT PLACING SEQUENCE ###
 ################################
 
-newparticlentuple det0 file=det0.txt format=ascii
+#newparticlentuple det0 file=det0.txt format=ascii
 
 do i 0 20
 
   place det x=0 z=$period*$i+$period/2 y=0
-  place FOFOCoil x=0 z=$period*$i+$period/2  y=0 
+  place FOFOCoil x=0 z=$period*$i+$period/2  y=0 rotation=X$tilt
   
 enddo
 
