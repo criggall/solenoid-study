@@ -1,11 +1,15 @@
 import numpy as np
 from matplotlib import pyplot as plt
-import os
 import math
 from scipy.optimize import curve_fit
 
+import sys
+import os
+parent_dir = os.path.abspath(os.path.join(os.getcwd(), '..'))
+sys.path.append(parent_dir)
+
 # Main directory:
-main_dir = '/Users/criggall/Documents/muon-cooling/Solenoid-Study/single-coil/'
+main_dir = '/Users/criggall/Documents/solenoid-study/study-single-coil/'
 
 # Range of coil lengths scanned:
 coil_lengths = np.arange(5,400,5) # mm
@@ -32,7 +36,7 @@ B2L_vals = []
 for j in range(len(coil_lengths)):
 
     # Import data:
-    dir = f'{main_dir}coil_length_scan/g4bl-output-sim{j+1}/'
+    dir = f'{main_dir}scans/coil_length_scan/g4bl-output-sim{j+1}/'
     file = f'{dir}AllTracks.txt'
     data = np.loadtxt(file)
 
