@@ -21,7 +21,7 @@ param solcurrent=100.0
 param maxStep=5.0
 
 # Solenoid rotations:
-param rot=X0.0,Z0.0
+param rot=X30.0,Z30.0
 
 # Note: rotations are applied left-to-right and given in degrees. 
 #	Provide comma-separated list with axis about with to rotate followed by angle of rotation.
